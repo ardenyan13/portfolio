@@ -16,3 +16,8 @@ with column2:
     Bachelor of Science in Computer Science.
     """
     sl.info(description)
+
+directions = """
+Below you can find some of the apps and projects I have built. Feel free to contact me!
+"""
+sl.write(directions)
