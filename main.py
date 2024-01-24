@@ -1,4 +1,5 @@
 import streamlit as sl
+import pandas
 
 # change width of columns
 sl.set_page_config(layout="wide")
@@ -21,3 +22,15 @@ directions = """
 Below you can find some of the apps and projects I have built. Feel free to contact me!
 """
 sl.write(directions)
+
+column3, column4 = sl.columns(2)
+
+df = pandas.read_csv("data.csv", sep=";")
+
+with column3:
+    for index, row in df[:1].iterrows():
+        sl.header(row["title"])
+
+with column4:
+    for index, row in df[1:].iterrows():
+        sl.header(row["title"])
