@@ -23,14 +23,21 @@ Below you can find some of the apps and projects I have built. Feel free to cont
 """
 sl.write(directions)
 
-column3, column4 = sl.columns(2)
+column3, empty_column, column4 = sl.columns([1.5, 0.5, 1.5])
 
+# use pandas to get the data
 df = pandas.read_csv("data.csv", sep=";")
 
 with column3:
     for index, row in df[:1].iterrows():
         sl.header(row["title"])
+        sl.write(row["description"])
+        sl.image("images/" + row["image"])
+        sl.write(f"[Source Code]({row['url']})")
 
 with column4:
     for index, row in df[1:].iterrows():
         sl.header(row["title"])
+        sl.write(row["description"])
+        sl.image("images/" + row["image"])
+        sl.write(f"[Source Code]({row['url']})")
