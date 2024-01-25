@@ -1,43 +1,43 @@
-import streamlit as sl
+import streamlit as st
 import pandas
 
 # change width of columns
-sl.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 # create 2 column object instances
-column1, column2 = sl.columns(2)
+column1, column2 = st.columns(2)
 
 with column1:
-    sl.image("images/photo.png")
+    st.image("images/photo.png")
 
 with column2:
-    sl.title("Arden Yan")
+    st.title("Arden Yan")
     description = """
     My name is Arden! I am currently a student at San Jose State University. I plan to graduate in May 2025 with a 
     Bachelor of Science in Computer Science.
     """
-    sl.info(description)
+    st.info(description)
 
 directions = """
 Below you can find some of the apps and projects I have built. Feel free to contact me!
 """
-sl.write(directions)
+st.write(directions)
 
-column3, empty_column, column4 = sl.columns([1.5, 0.5, 1.5])
+column3, empty_column, column4 = st.columns([1.5, 0.5, 1.5])
 
 # use pandas to get the data
 df = pandas.read_csv("data.csv", sep=";")
 
 with column3:
     for index, row in df[:1].iterrows():
-        sl.header(row["title"])
-        sl.write(row["description"])
-        sl.image("images/" + row["image"])
-        sl.write(f"[Source Code]({row['url']})")
+        st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])
+        st.write(f"[Source Code]({row['url']})")
 
 with column4:
     for index, row in df[1:].iterrows():
-        sl.header(row["title"])
-        sl.write(row["description"])
-        sl.image("images/" + row["image"])
-        sl.write(f"[Source Code]({row['url']})")
+        st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])
+        st.write(f"[Source Code]({row['url']})")
